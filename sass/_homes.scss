@@ -1,0 +1,4 @@
+.homes {
+    background-color: $color-secondary;
+    grid-column: center-start / center-end; // Spans the grid line columns of center-start and ends at center-end which we defined these column grid lines in our base.scss file. The center-start and center-end grid lines is basically placing the content in the middle 8 columns of our page.
+}

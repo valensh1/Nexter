@@ -13,3 +13,31 @@ $color-grey-dark-2: #6D5D4B;
 // FONT VARIABLES
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
+
+
+*,  // Default global settings
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // Everything is based upon 10px with this. 10px / 16px = .625; With this 1rem will = 10px.
+}
+
+body {
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3,min-content); // Laying out of our rows; 6 rows in total on our page; 1st row = sidebar / header/ realtors classes. 2nd row = features class. 3rd row = story__pictures / story__content classs. 4th row = homes class. 5th row = gallery class. 6th and final row = footer class.
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem,1fr) [full-end]; // Most designs are based off a 12 column layout. We define 8 columns here with 1st column which is our sidebar being 8rem fixed width. Then we have 8 columns we define with the minmax function to give us a total of 9 columns. Then we add 1fr between sidebar and main content and one 1fr after main content which will essentially divide the remaining 3 columns evenly (1 sidebar  + 8 main content columns = 9 columnns and we want 3 more columns to make 12 so it will evenly add 1.5 columns on both sides of the main content); minmax function says make columns a minimum width of the min-content and a max-width of 14rem so bascially content will be between those two. When screen shrinks the column widths will shrink to fit the minimum content and when the window gets bigger the column widths will get wider but it will never exceed 14rem. The brackets such as [sidebar-start] is the names we are giving to the grid lines. Notice the names come before the property value and you can have more than one name to describe a grid line. 14rem is used because it is the most common screen width of what people use.
+}
+

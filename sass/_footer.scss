@@ -1,0 +1,5 @@
+.footer {
+    background-color: $color-secondary;
+    grid-column: full-start / full-end; // Spans the grid line columns of full-start and ends at full-end which we defined these column grid lines in our base.scss file. The full-start and full-end grid lines is basically placing the content in what we call the full bleed section of our page which spans from the end of the sidebar column all the way to the end of the right side of our page.
+    
+}

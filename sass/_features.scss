@@ -1,0 +1,33 @@
+// 2nd row of website featuring Worlds Best Luxury Homes / Only the Best Properties / All Homes in Top Locations / New Home in One Week / Top 1% Realtors / Secure Payments on Nexter Section.
+.features { 
+    grid-column: center-start / center-end; // ; Layout placement of our features class. Spans the grid line columns of center-start and ends at center-end which we defined these column grid lines in our base.scss file. The center-start and center-end grid lines is basically placing the content in the middle 8 columns of our page.
+    margin: 15rem 0;
+
+    display: grid; // Placing a subgrid inside our grid item to position our 6 feature items. This grid starts where the grid above is placed.
+    // grid-template-columns: repeat(3, 1fr); // 3 equally sized columns; fr stands for fractional unit; Since we have 6 items and we specified only 3 columns it automatically generates 2 rows (3 items per row). The grid here in considered an implicit grid since we didn't specify any rows but no need to specify any rows because it automatically generates our rows for us.
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // To make this responsive we commented out the line of code above where we specified our columms. To make the columns responsive we said auto-fit as many columms as you can based upon sizing columns no smaller than 25rem and no larger than 1fr. Basically its going to size all the columns between these 2 measurements and keep all the columns the same width since we set them all to 1fr; Once the window gets too small the auto-fit will throw the items that don't fit on to a new row.
+    grid-gap: 6rem;
+    align-items: start;
+}
+
+.feature {
+
+    display: grid; // subgrid inside each feature item which positions <svg> icon and the h4 heading side by side with the paragraph as a row underneath.
+    grid-template-columns: min-content 1fr; // First column is the icon and we set to min-content in case we ever want to increase the size of the icon. The 2nd column we just set to 1fr (1 fractional unit). Because we set 2 columns this ends up becoming a 2x2 grid because we have 3 items so the 3rd item implicity drops to the 2nd row and we could specify rows but we don't have to.
+    row-gap: 1.5rem;
+    column-gap: 2.5rem;
+    
+    &__icon {
+        fill: $color-primary; // fill is the way to color your svg items
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; // Needed to do this so that the icon takes up the whole entire column and it is set to min-content. The problem before putting this here is the paragraph automatically since its the 3rd item gets pushed to the 2nd row but in the first column and because our column is set to min-content the column is much wider than we want for the icon due to the paragraph taking up more width in the column than we woud like. So therefore we want to span the icon over the 2 rows so that it has its own column to itself thus forcing the paragraph to go under the 2nd column which fits better with the width of the h4 headings. This ulitmately will push the <svg> icon in closer position to the h4 headings. You can't put -1 here for end because -1 for row end only works on EXPLICIT grid lines but our end row line here is an implicit grid line because we never defined any grid line rows so all our rows our implicit and using -1 would not work here to get last row.
+        transform: translateY(-1rem); // Moves icon up a bit to center with heading <h4> tag; It was a tad bit off center vertically
+    }
+
+
+    &__text {
+        font-size: 1.7rem;
+    }
+
+}

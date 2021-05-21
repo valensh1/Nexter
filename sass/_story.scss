@@ -1,0 +1,12 @@
+.story {
+    
+    &__pictures {
+        background-color: $color-primary;
+        grid-column: full-start / col-end 4; // Goes to full start right after the sidebar and ends where the story content starts. Notice we end at col-end 4 which is the same as the column grid line col-start 5 specified in the &__content below.
+    }
+
+    &__content {
+        background-color: $color-grey-light-1;
+        grid-column: col-start 5 / full-end; // Starts at col-start 5 (same as col-end 4 above just using the other name we gave to column grid line) and goes all the way to the right side of page to full-end.
+    }
+}

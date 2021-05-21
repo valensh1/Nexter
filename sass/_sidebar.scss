@@ -1,0 +1,5 @@
+.sidebar {
+    background-color: $color-primary;
+    grid-column: sidebar-start / sidebar-end; // Position sidbar on grid from sidebar-start column and end in on sidebar-end column
+    grid-row: 1 / -1; // Position sidebar starting at row line 1 and ending on last row; -1 indicates last row.
+}

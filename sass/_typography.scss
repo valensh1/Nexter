@@ -1,0 +1,29 @@
+%heading {
+    font-family: $font-display;
+    font-weight: 400;
+}
+
+.heading-1 {
+    @extend %heading; // Extends works opposite of a mixin in the fact .heading-1 is treated as if it was copied into the %heading above which includes those styles.
+}
+
+.heading-2 {
+    @extend %heading; // Extends works opposite of a mixin in the fact .heading-2 is treated as if it was copied into the %heading above which includes those styles.    
+}
+
+.heading-3 {
+    @extend %heading; // Extends works opposite of a mixin in the fact .heading-3 is treated as if it was copied into the %heading above which includes those styles.    
+}
+
+.heading-4 {
+    @extend %heading; // Extends works opposite of a mixin in the fact .heading-4 is treated as if it was copied into the %heading above which includes those styles.    
+    font-size: 1.9rem;
+
+    &--light { // Modifier class
+        color: $color-grey-light-1;
+    }
+
+    &--dark { // Modifier class
+        color: $color-grey-dark-1;
+    }
+}

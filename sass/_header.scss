@@ -1,0 +1,4 @@
+.header {
+    background-color: $color-grey-dark-1;
+    grid-column: full-start / col-end 6; // Starts after the sidebar and the extra 1.5 column spacing that we gave to both sides for our centered content. The sidebar is one column and we gave 8 columns of content in middle for a total of 9 columns. We have 3 more columns to equal standard 12 column layout so we assigned 1.5 columns on both sides of content specified as 1fr in our grid-template-columns in our base.scss page. We end it at col-end 6 to give the remaining 2 columns we have as our content to the realtors section. Remember that each column grid line has 2 names (col-end 1 and col-start 2) for when counting your columns because this could be confusing if you don't remember this.
+}
