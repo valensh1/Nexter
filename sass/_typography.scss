@@ -9,10 +9,24 @@
 
 .heading-2 {
     @extend %heading; // Extends works opposite of a mixin in the fact .heading-2 is treated as if it was copied into the %heading above which includes those styles.    
+    font-size: 4rem;
+    font-style: italic;
+    line-height: 1; // Remove the big spacing between the h2 and h3 elements and then even amongst the h3 elements itself when the text wraps.
+
+    &--light { // Modifier class
+        color: $color-grey-light-1;
+    }
+
+    &--dark { // Modifier class
+        color: $color-grey-dark-1;
+    }
 }
 
 .heading-3 {
     @extend %heading; // Extends works opposite of a mixin in the fact .heading-3 is treated as if it was copied into the %heading above which includes those styles.    
+    font-size: 1.6rem;
+    color: $color-primary;
+    text-transform: uppercase;
 }
 
 .heading-4 {
@@ -27,3 +41,25 @@
         color: $color-grey-dark-1;
     }
 }
+
+.btn {
+    background-color: $color-primary;
+    color: #fff;
+    border: none; // Eliminate the border around the button
+    border-radius: 0; // Give button 0 radius as buttons by default come with a little radius to them
+    font-family: $font-display;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 1.8rem 3rem;
+    cursor: pointer;
+    transition: all .2s; // Transition for the hover affect below &:hover change of color. .2s duration
+
+    &:hover {
+        background-color: $color-primary-dark;
+    }
+}
+
+.mb-sm { margin-bottom: 2rem; } // CSS helper classes created - margin bottom small
+.mb-md { margin-bottom: 3rem; } // CSS helper classes created - margin bottom medium
+.mb-lg { margin-bottom: 4rem; } // CSS helper classes created - margin bottom large
+.mb-hg { margin-bottom: 8rem; } // CSS helper classes created - margin bottom huge

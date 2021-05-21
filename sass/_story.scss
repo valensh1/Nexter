@@ -8,5 +8,23 @@
     &__content {
         background-color: $color-grey-light-1;
         grid-column: col-start 5 / full-end; // Starts at col-start 5 (same as col-end 4 above just using the other name we gave to column grid line) and goes all the way to the right side of page to full-end.
+        padding: 6rem 8vw;
+
+        // GRID WAY TO POSITION CONTENT - FLEXBOX WAY COMMENTED OUT BELOW ALSO WORKS
+        display: grid; // Set to grid so we can vertically align content within the container.
+        align-content: center; // Aligns all our content in the vertical / column direction which we needed to do to align our h2, h3, paragraph and button here under story__content.
+        justify-items: start; // Creates button that starts at beginning of grid cell and doesn't stretch the length of the entire grid cell. By default when you do grid it stretches everything its entire grid cell. We had to use justify-items here because we wanted to position it horizontally / row direction.
+
+        // FLEXBOX WAY TO POSITION CONTENT - THIS IS IF WE DECIDED TO CENTER ITEMS IN THE story__content SECTION USING FLEXBOX
+        // display: flex; // Used flexbox to vertically align the items in the container. Since this is a grid item and not a grid container we couldn't use the grid centering properties here.
+        // flex-direction: column; // Flexbox default direction is row and we need items to be vertical / column direction.
+        // justify-content: center; // Vertically aligns content in center. Remember since we changed the flex-direction to column the main-axis changes to vertical / column which the justify-content property always aligns the main-axis which in this case has now changed to vertical / column direction. In this case, align-items would now center horizontally / row direction.
+        // align-items: start; // Button stretches the width of the container because default property is stretch. But we can change this here so we have a smaller button by setting it to start as we don't want a button that stretches the width of the container we want it much smaller.
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 4rem;
     }
 }
