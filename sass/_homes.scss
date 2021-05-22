@@ -1,4 +1,78 @@
 .homes {
-    background-color: $color-secondary;
     grid-column: center-start / center-end; // Spans the grid line columns of center-start and ends at center-end which we defined these column grid lines in our base.scss file. The center-start and center-end grid lines is basically placing the content in the middle 8 columns of our page.
+    margin: 15rem 0;
+    display: grid; // Setting up the subgrid to style the invidual house cards
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // RESPOSIVE DESIGN - WITH THIS NO MEDIA QUERIES NECESSARY; Sets the columns to auto-fit which is CSS will fit as many columns in as it finds necessary (based upon minmax function params) and if not then it will just wrap to another row. Minmax function also sets the column width to a minimum of 25rem or 250px and a max of 1fr. At all times the grid cells will be somewhere between 25rem and 1fr unit. When screen decreases the grid cells will never go lower than 25rem.
+    gap: 7rem;
 }
+
+    .home {
+        background-color: $color-grey-light-1;
+        display: grid; // Setting up the subgrid on our home card
+        grid-template-columns: repeat(2, 1fr); // Within each home card we only need to establish 2 columns as this is a 2 column grid
+        row-gap: 3.5rem;
+
+        &__img {
+            width: 100%;
+            grid-column: 1 / -1; // Position the image in our home card to span the entire grid; Column -1 is the last column line in grid.
+            grid-row: 1 / 2; // Needed to specify the row here because when we placed our like icon (heart) below it created a new row for the like icon on top and pushed our image icon down to its own row. However, we want the image and the like icon to share the same row so we need to specify the row positioning on both otherwise the grid algorithm will automatically push one to its own row.
+            z-index: 1; // Give it a z-index of 1 which is less than the like icon below because we want it to show but we need it to be a z-index lower than the like icon to ensure the like icon displays on top.
+        }
+
+        &__like {
+            grid-row: 1 / 2;
+            grid-column: 2 / 3;
+            fill: $color-primary; // Change the color of our svg icons
+            height: 2rem;
+            width: 2rem;
+            z-index: 2; // Give it a z-index greater than the image it sits upon to ensure the like icon is seen
+            justify-self: end; // Wanted to align just this like icon horizontally to the end of home card so we use justify-self property to accomplish this
+            margin: 1rem; // Margin all around of 1rem to give it a bit of space from end of home card
+        }
+
+        &__name {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2; // Added later because we want to overlap this h5 header on top of image. And to do this we not only need to specify a grid-column position but we also need to specify a grid-row position.
+            z-index: 3; // Give this a z-index which is higher than the image which we only gave a z-index of 1 to ensure this sits on top of the image.
+            font-family: $font-display;
+            font-size: 1.6rem;
+            text-align: center; // Aligns text in center of grid cell
+            padding: 1.25rem;
+            background-color: $color-secondary;
+            color: #fff;
+            font-weight: 400;
+
+            width: 80%; // This is to get the home name with the background color to be centered but not take up the entire grid width. 
+            justify-self: center; // Horizontally centers the entire block in the grid
+            align-self: end; // Vertically centers the entire block in the grid. This positions the name to bottom of grid row 1 / 2 which is where we specicied we wanted this to sit in grid.
+            transform: translateY(50%); // Moves item down 50% and the 50% translates into the height of the item itself; Now we need this to overlap the grid row line 2 so half sits on top and the other half sits on bottom of line so this way the name caption overlaps the picture a little bit and a bit of it hangs off the picture.
+        }
+
+        &__location,
+        &__rooms {
+            margin-top: 2.5rem; // Had to add a bit more margin at top here because the row gaps are all consistent throughout grid and we can't change just one row gap for the first 2 icons below picture but we want to give them more room but not that same room to the bottom icons so we have to target just those top 2 icons and give them a margin-top.
+        }
+
+
+        &__location,
+        &__rooms,
+        &__area,
+        &__price {
+           
+            font-size: 1.5rem;
+            margin-left: 2rem;
+            display: flex; // Set up of flexbox to quickly place the svg icon and its <p> tag description horizontally next to each other
+            align-items: center; // Vertically center the svg icon and its <p> tag description.
+
+            svg {
+                fill: $color-primary; // Change the color of our svg icons
+                height: 2rem;
+                width: 2rem;
+                margin-right: 1rem; // To give it a little bit of room between the <svg> icon and its <p> tag caption
+            }
+        }
+
+        &__btn {
+            grid-column: 1 / -1; // Position the button in our home card to span the entire grid; Column -1 is the last column line in grid.
+        }
+    }
