@@ -3,6 +3,27 @@
     &__pictures {
         background-color: $color-primary;
         grid-column: full-start / col-end 4; // Goes to full start right after the sidebar and ends where the story content starts. Notice we end at col-end 4 which is the same as the column grid line col-start 5 specified in the &__content below.
+        display: grid;
+        grid-template-rows: repeat(6, 1fr); // Want to create a 6x6 grid where the image occupies ~ 67% of the available space.
+        grid-template-columns: repeat(6, 1fr); // Want to create a 6x6 grid where the image occupies ~ 67% of the available space.
+        align-items: center; // Vertical centering of image on grid. Need this because due to image trying to keep its aspect ratio it doesn't take up full space on grid like we specified in &__img--1 so we needed to align accordingly in a vertical fashion.
+        background-image: linear-gradient(rgba($color-primary, .5), rgba($color-primary, .5)), url(../img/back.jpg); // Add image as an overall background with some of our primary color added to it via the linear gradient trick. File path is considering you are starting from the compiled CSS file which is in the CSS folder so you navigate up a level to get to the global application level then go into the img folder and then find the file.
+    
+    }
+
+    &__img--1 {
+        width: 100%;
+        grid-row: 2 / 6; // Centering of image on grid. However, image is not taking up the full rows we specified and is smaller because it is trying to maintain its aspect ratio. This will happen with images. If it were anything else other than an image it would take up the space we specified.
+        grid-column: 2 / 6; // Centering of image on grid.
+        box-shadow: 0 2rem 5rem rgba(#000, .1);
+    }
+
+    &__img--2 {
+        width: 115%; // Have width here at 115% so the image hangs over on to the other half (content side). After doing this the image moves and hangs over to the other side but you can't see it. So that's why we set a z-index and just put a number of 20 so that it shows on top and we now see it hang over on to the story__content side.
+        grid-row: 4 / 6;
+        grid-column: 4 / 7;
+        z-index: 20;
+        box-shadow: 0 2rem 5rem rgba(#000, .2);
     }
 
     &__content {
