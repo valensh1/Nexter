@@ -1,4 +1,89 @@
 .gallery {
-    background-color: $color-grey-dark-1;
+    background-color: $color-grey-light-1;
     grid-column: full-start / full-end; // Spans the grid line columns of full-start and ends at full-end which we defined these column grid lines in our base.scss file. The full-start and full-end grid lines is basically placing the content in what we call the full bleed section of our page which spans from the end of the sidebar column all the way to the end of the right side of our page.
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); // Creation of 8x7 grid;
+    grid-template-rows: repeat(7, 5vw); // Creation of 8x7 grid; Use 5vw so that images maintain their aspect ratio upon resizing.
+    gap: 1.5rem;
+    padding: 1.5rem;
+
+    &__item {
+        
+        &--1 {
+            grid-row: 1 / span 2;
+            grid-column: 1 / span 2;
+        }
+
+        &--2 {
+            grid-row: 1 / span 3;
+            grid-column: 3 / span 3;
+        }
+
+        &--3 {
+            grid-row: 1 / span 2;
+            grid-column: 6 / span 1;
+        }
+
+        &--4 {
+            grid-row: 1 / span 2;
+            grid-column: 7 / -1;
+        }
+
+        &--5 {
+            grid-row: 3 / span 3;
+            grid-column: 1 / span 2;
+        }
+
+        &--6 {
+            grid-row: 4 / span 2;
+            grid-column: 3 / span 2;
+        }
+
+        &--7 {
+            grid-row: 4 / span 1;
+            grid-column: 5 / span 1;
+        }
+
+        &--8 {
+            grid-row: 3 / span 2;
+            grid-column: 6 / span 2;
+        }
+
+        &--9 {
+            grid-row: 3 / span 3;
+            grid-column: 8 / -1;
+        }
+
+        &--10 {
+            grid-row: 6 / span 2;
+            grid-column: 1 / span 1;
+        }
+
+        &--11 {
+            grid-row: 6 / span 2;
+            grid-column: 2 / span 2;
+        }
+
+        &--12 {
+            grid-row: 6 / span 2;
+            grid-column: 4 / span 1;
+        }
+
+        &--13 {
+            grid-row: 5 / span 3;
+            grid-column: 5 / span 3;
+        }
+
+        &--14 {
+            grid-row: 6 / span 2;
+            grid-column: 8 / -1;
+        }                
+    }
+
+    &__img {
+        width: 100%; // Puts each picture in its own grid cell. Due to image size upon original placement the images went way over to other grid cells etc because the image sizes are way too big.  
+        height: 100%; // Puts each image at 100% height of its parent container which is the <figure> tag. Each <figure> tag fills up one grid cell in the grid because we set the figure as the grid item and then we put the img inside the <figure> tag with a height and width set to 100% so it will be the size of its parent which is the <figure> tag and the figure tag is a grid item which is assigned a grid cell.
+        object-fit: cover; // Image fits entirely in grid-cell with just height and width set to 100% above but it won't maintain its aspect ratio. Image keeps its aspect ratio with object-fit set to cover and fills given dimension (in this case it fills the parent container which is the <figure> tag) as the window is resized.
+        display: block; // Ensure image is filling a grid cell because img tag by nature is inline and we want to ensure it has a block spacing.
+    }
 }
