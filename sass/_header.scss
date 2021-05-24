@@ -8,8 +8,8 @@
     padding-top: 4rem; // Take 8rem padding that is applied everywhere above and only give padding of 4rem to the top.
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr; // We just define the 1fr height for the first row and it will give the other rows height automatically to fill the rest of the 80vh we assigned to the header section in the base.scss file under the .header class. The result is a big row height for the logo and then the rest of the text near bottom of the container bunched together with the same row height. We then set the second row to min-content and the 3rd row to a fixed height of 6rem. Set the 4th row which is the button to 1fr also which will give it a really big space like the first row but then we adjust that cell individually by using align-self and justify-self properties below.
-    grid-template-columns: max-content; // Give the column width a width large enough to fit the largest content
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr; // We just define the 1fr height for the first row and it will give the other rows height automatically to fill the rest of the 80vh we assigned to the header section in the base.scss file under the .header class. The result is a big row height for the logo and then the rest of the text near bottom of the container bunched together with the same row height. We then set the second row to min-content and the 3rd row to a fixed height of 6rem. Set the 4th row which is the button to 1fr also which will give it a really big space like the first row but then we adjust that cell individually by using align-self and justify-self properties below. Later for resposive design purposes added minmax function with 6rem being minimum content for 3rd column and a max content of min-content so that items always fit within container and don't overflow.
+    grid-template-columns: minmax(min-content, max-content); // Give the column width a width large enough to fit the largest content but later for responsive design purposes later came back and added minmax function so that column is a min-width of the content and a max-width of the largest content;
     gap: 1.5rem;
     justify-content: center; // Centers horizontally the grid items
 
@@ -46,9 +46,11 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 3rem;
         justify-items: center; // Centers each logo item in its grid cell
+        align-items: center; // Added for responsive design to ensure items stay vertically centered when screen is resized
         
         img {
-            height: 2.5rem;
+            max-height: 2.5rem; // Changed from height to max-height to make responsive; 
+            max-width: 100%; // Responsive design added to make the img icons have a max-width of 100% but decrease in size as screen gets smaller.
             filter: brightness(70%); // Makes the image logo appear darker and gives it more a grey color as opposed to the default 100% white looking color
         }
     }

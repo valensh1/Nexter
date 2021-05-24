@@ -6,6 +6,13 @@
     display: flex; // Establish flexbox so that we can center hamburger menu horizontally in sidebar
     justify-content: center; // Centering of hamburger menu horizontally
 
+    @media only screen and (max-width: $bp-large) { // Responsive design - this is to correctly place the sidebar as the top row once the screen size gets below 1000px
+        grid-column: 1 / -1; // Place the new sidebar in first row to span the entire screen from column 1 all the way to the last column which is represented by a -1.
+        grid-row: 1 / 2; // Puts sidebar in first row from row gridline 1 to row gridline 2.
+        justify-content: flex-end; // Since this is a flexbox item we are going to use justify-content with flex-end here to place it at the end of the container in a horizontal direction.
+        align-items: center; // Align items vertically
+    }
+
     .nav-btn { // Create a button for hamburger menu in HTML
        border: none; // Eliminate automatic border that comes when you create a button in HTML
        border-radius: 0; // Eliminate automatic border-radius that comes when you create a button in HTML
@@ -26,6 +33,14 @@
 
        &::before { transform: translateY(-1.5rem); } // Before bar was created in &::before, &::after code above but it sits in same place as original bar so we need to move it up. Negative rem is moving it upwards.
        &::after { transform: translateY(1.3rem); } // After bar was created in &::before, &::after code above but it sits in same place as original bar so we need to move it down. The number does not equal the opposite of the before bar thats becuase the starting point where we were translating from wasn't centered so this slight adjustment of 1.5rem down to 1.3rem fixes it and makes the after bar the same space as the middle bar to the before bar. 
+    
+       @media only screen and (max-width: $bp-large) { // Media query to help place hamburger menu when its the top row for screens below 1000px and give it some margin from top and right edges of screen
+           margin-top: 0;
+           margin-right: 3rem;
+
+           &::before { transform: translateY(-1.2rem); } // Adjustment to make hamburger menu look a bit better with screen sizes below 1000px
+           &::after { transform: translateY(1rem); } // Adjustment to make hamburger menu look a bit better with screen sizes below 1000px 
+       }
     }
 }
 
