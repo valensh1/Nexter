@@ -1,5 +1,40 @@
 .footer {
     background-color: $color-secondary;
     grid-column: full-start / full-end; // Spans the grid line columns of full-start and ends at full-end which we defined these column grid lines in our base.scss file. The full-start and full-end grid lines is basically placing the content in what we call the full bleed section of our page which spans from the end of the sidebar column all the way to the end of the right side of our page.
-    
+    padding: 8rem;
+}
+
+.nav {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); // Responsive Design - Auto fit will auto fit as many columns as possible given that the columns are a minimum of 20rem and max 1fr. If the window gets resized to where the column gets below 20rem then a column moves down to a row.
+    gap: 2rem;
+    align-items: center;
+
+    &__link:link,
+    &__link:visited {
+       font-size: 1.4rem;
+       color:#fff;
+       text-decoration: none;
+       font-family: $font-display;
+       text-transform: uppercase;
+       text-align: center;
+       padding: 1.5rem;
+       display: block;
+       transition: all .2s;
+    }
+
+    &__link:hover,
+    &__link:active {
+        background-color: rgba(#fff, .05); // Makes light color background upon hover; .05 represents how bright or transparent color is. The closer to 0 the more faint the color is and the closer to 1 the more dark the color is.
+        transform: translateY(-.3rem); // Moves link item up a bit upon hover.
+    }
+}
+
+.copyright {
+    font-size: 1.4rem;
+    color: $color-grey-light-2;
+    text-align: center; // This aligned text in center when it was 100% width but when we decreased the width to 70% to kind of wrap text a bit it threw off the centering. That's why we had to have margin set to auto to re-center the <p> tag.
+    width: 70%; // When set width to 70% of container it threw off the centering of text so had to add margin auto below to re-center text.
+    margin: 6rem auto;
 }

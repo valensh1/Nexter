@@ -1,5 +1,30 @@
+// Creation of the Sidebar Hamburger Menu
 .sidebar {
     background-color: $color-primary;
     grid-column: sidebar-start / sidebar-end; // Position sidbar on grid from sidebar-start column and end in on sidebar-end column
     grid-row: 1 / -1; // Position sidebar starting at row line 1 and ending on last row; -1 indicates last row.
+    display: flex; // Establish flexbox so that we can center hamburger menu horizontally in sidebar
+    justify-content: center; // Centering of hamburger menu horizontally
+
+    .nav-btn { // Create a button for hamburger menu in HTML
+       border: none; // Eliminate automatic border that comes when you create a button in HTML
+       border-radius: 0; // Eliminate automatic border-radius that comes when you create a button in HTML
+       
+       background-color: #fff; // Make a skinny white bar
+       height: .2rem; // White bar only has a tiny height
+       width: 4.5rem; // White bar has a long width compared to height to give it a horizontal line
+       margin-top: 4rem; // Moving the 3 bars down because before doing this you only saw 2 bars because the top bar was off the page.
+
+       &::before, // Creation of other 2 bars
+       &::after {
+           content: '';
+           background-color: #fff;
+           height: .2rem;
+           width: 4.5rem;
+           display: block;
+       }
+
+       &::before { transform: translateY(-1.5rem); } // Before bar was created in &::before, &::after code above but it sits in same place as original bar so we need to move it up. Negative rem is moving it upwards.
+       &::after { transform: translateY(1.3rem); } // After bar was created in &::before, &::after code above but it sits in same place as original bar so we need to move it down. The number does not equal the opposite of the before bar thats becuase the starting point where we were translating from wasn't centered so this slight adjustment of 1.5rem down to 1.3rem fixes it and makes the after bar the same space as the middle bar to the before bar. 
+    }
 }
