@@ -2,5 +2,31 @@
     background-color: $color-secondary;
     // grid-column: full-start / col-end 6; // This was the grid-column assigned to the heading but commented it out here for reference so you can see how this was broken out between the grid lines and how it realtes to the realtors column grid lines assigned (read full comments to understand what referring to); Starts after the sidebar and the extra 1.5 column spacing that we gave to both sides for our centered content. The sidebar is one column and we gave 8 columns of content in middle for a total of 9 columns. We have 3 more columns to equal standard 12 column layout so we assigned 1.5 columns on both sides of content specified as 1fr in our grid-template-columns in our base.scss page. We end it at col-end 6 to give the remaining 2 columns we have as our content to the realtors section. Remember that each column grid line has 2 names (col-end 1 and col-start 2) for when counting your columns because this could be confusing if you don't remember this.
     grid-column: col-start 7 / full-end; // Starts right after header section I have commented above for reference. Notice how we specify col-start 7 but this is actually the same as col-end 6 above that we gave to header section but remember we can have 2 names for each column grid line so they both referecen the same column grid line but we are just using the different names.
-    
+    padding: 3rem;
+    display: grid; // Setting up of subgrid so that we can align the realtors section horizontally and vertically inside its grid container; This grid is only one column.
+    align-content: center; // Aligning realtors content vertically within its grid container
+    justify-content: center; // Aligning realtors content horizontally within its grid container
+    gap: 2rem;
+    justify-items: center; // Centers ONLY the Top 3 Realtors h3 heading tag within its grid cell. 
+
+    &__list {
+        display: grid; // Establishment of grid with a 2 column layout
+        grid-template-columns: min-content max-content; // 2 column layout; 1 column for the image which we want the width to be the width of the min-content which is the width of the image itself (defined as 7rem below) and the 2nd column is the text which houses the name of the realtor and the houses sold which we want set to max-content so the column is as wide as the content.
+        column-gap: 2rem;
+        row-gap: 5vh;
+        align-items: center; // Aligns each individual item in the center of its grid cell
+    }
+
+    &__img {
+        width: 7rem;
+        border-radius: 50%; // Makes picture round
+        display: block; // Always best to display images as a block
+    }
+
+    &__sold {
+        text-transform: uppercase;
+        color: $color-grey-light-2;
+        margin-top: -.3rem; // Want to move this up closer to the name of the realtor
+    }
+
 }

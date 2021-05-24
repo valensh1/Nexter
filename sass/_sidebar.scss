@@ -28,3 +28,5 @@
        &::after { transform: translateY(1.3rem); } // After bar was created in &::before, &::after code above but it sits in same place as original bar so we need to move it down. The number does not equal the opposite of the before bar thats becuase the starting point where we were translating from wasn't centered so this slight adjustment of 1.5rem down to 1.3rem fixes it and makes the after bar the same space as the middle bar to the before bar. 
     }
 }
+
+

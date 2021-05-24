@@ -5,6 +5,9 @@
 
 .heading-1 {
     @extend %heading; // Extends works opposite of a mixin in the fact .heading-1 is treated as if it was copied into the %heading above which includes those styles.
+    font-size: 4.5rem;
+    color: $color-grey-light-1;
+    line-height: 1;
 }
 
 .heading-2 {
