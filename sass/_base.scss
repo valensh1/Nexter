@@ -17,6 +17,8 @@ $font-display: 'Josefin Sans', sans-serif;
 // RESPONSIVE DESIGN BREAKPOINTS
 $bp-largest: 75em; // Corresponds to 1200px ---> 1200px / 16px = 75em
 $bp-large: 62.5em; // Corresponds to 1000px ---> 1000px / 16px = 62.5em
+$bp-medium: 50em; // Corresponds to 800px ---> 800px / 16px = 50em
+$bp-small: 37.5em; // Corresponds to 600px ---> 600px / 16px = 37.5em
 
 
 
@@ -53,6 +55,10 @@ body {
     @media only screen and (max-width: $bp-large) { // Responsive design - at less than 1000px this moves the sidebar from the far left column and places it at the top of the screen as a row. Had to add the grid structure from above to the media query and remove the column data where we named the columns related to the sidebar. Then we included the sidebar in the rows as the first row and gave it a height definition of 6rem. Now you also need to go and adjust the positioning of the sidebar on the sidebar.scss file and give it its correct positioning with another media query on that file.
         grid-template-rows: 6rem 80vh min-content 40vw repeat(3,min-content); // Added a new row (1st row with a height of 6rem) for the new placement of the sidebar.
         grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem,1fr) [full-end]; // Removed sidebar columns
+    }
+
+    @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+        grid-template-rows: 6rem calc(100vh - 6rem); // Notice the calc (100vh - 6rem) the 6rem is to subtract out the sidebar at top so when you are looking at top of page you see sidebar and all of header section at same time as your 100vh. The automatic placement algorithm will size the other rows on the implicit grid based on minimum content.
     }
 }
 

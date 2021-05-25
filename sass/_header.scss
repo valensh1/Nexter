@@ -13,6 +13,14 @@
     gap: 1.5rem;
     justify-content: center; // Centers horizontally the grid items
 
+    @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+        grid-column: 1 / -1; // Under 800px we want header to span full width of page and not have realtors section over to right in its own column.
+    }
+
+    @media only screen and (max-width: $bp-small) { // Responsive design - at less than 600px.
+        padding: 5rem; // Decrease padding from 8rem in bigger screens down to 5rem for smaller screens.
+    }
+
     &__logo {
         height: 3rem;
         justify-self: center; // Aligns logo horizontally within its grid cell.

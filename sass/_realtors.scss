@@ -9,12 +9,24 @@
     gap: 2rem;
     justify-items: center; // Centers ONLY the Top 3 Realtors h3 heading tag within its grid cell. 
 
+    @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+        grid-column: 1 / -1; // Under 800px we want header to span full width of page and not have realtors section over to right in its own column.
+    }
+
     &__list {
         display: grid; // Establishment of grid with a 2 column layout
         grid-template-columns: min-content max-content; // 2 column layout; 1 column for the image which we want the width to be the width of the min-content which is the width of the image itself (defined as 7rem below) and the 2nd column is the text which houses the name of the realtor and the houses sold which we want set to max-content so the column is as wide as the content.
         column-gap: 2rem;
         row-gap: 5vh;
         align-items: center; // Aligns each individual item in the center of its grid cell
+   
+        @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px. At 800px or less we got the realtors section to be below Seen On TV section but what this is doing is now spreading the Realtors section horizontally to span width of page.
+            grid-template-columns: repeat(3, min-content max-content) // Realtors section got moved down below Seen On TV section in Media Query in code above. Now we are creating 3 columns for Realtors section to span page horizontally 
+        }
+
+        @media only screen and (max-width: $bp-small) { // Responsive design - at less than 600px.
+            grid-template-columns: min-content max-content // Realtors section goes back to 2 columns below 600px screen size where the images, h4 and p tags associated with the realtors are displayed vertically rather than horizontally. We changed it to horizontal display for medium sized screens but changed it back to vertical display for smaller screens since in the smaller screens the realtors section is at the bottom of the heading section and we don't have the screen width to display horizontally anymore. 
+        }
     }
 
     &__img {

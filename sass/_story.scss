@@ -8,7 +8,12 @@
         grid-template-columns: repeat(6, 1fr); // Want to create a 6x6 grid where the image occupies ~ 67% of the available space.
         align-items: center; // Vertical centering of image on grid. Need this because due to image trying to keep its aspect ratio it doesn't take up full space on grid like we specified in &__img--1 so we needed to align accordingly in a vertical fashion.
         background-image: linear-gradient(rgba($color-primary, .5), rgba($color-primary, .5)), url(../img/back.jpg); // Add image as an overall background with some of our primary color added to it via the linear gradient trick. File path is considering you are starting from the compiled CSS file which is in the CSS folder so you navigate up a level to get to the global application level then go into the img folder and then find the file.
-    
+        background-size: cover;
+        
+        @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+            grid-column: 1 / -1; // Under 800px we want &__pictures to span full width of page and not only consume half the screen with the other half going to the story__content.
+            padding: 6rem;
+        }
     }
 
     &__img--1 {
@@ -16,6 +21,11 @@
         grid-row: 2 / 6; // Centering of image on grid. However, image is not taking up the full rows we specified and is smaller because it is trying to maintain its aspect ratio. This will happen with images. If it were anything else other than an image it would take up the space we specified.
         grid-column: 2 / 6; // Centering of image on grid.
         box-shadow: 0 2rem 5rem rgba(#000, .1);
+    
+        @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+            grid-column: 1 / 5; // Under 800px we want &__pictures to span full width of page and not only consume half the screen with the other half going to the story__content.
+            grid-row: 1 / -1;
+        }
     }
 
     &__img--2 {
@@ -24,6 +34,11 @@
         grid-column: 4 / 7;
         z-index: 20;
         box-shadow: 0 2rem 5rem rgba(#000, .2);
+
+        @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+            grid-row: 1 / -1; // Under 800px we need to specify rows to ensure pictures get placed on same row and rearrange how they look on screens under 800px.
+            width: 100%; // Make image fill the entire width of its grid cell because in regular design it has a property value of 115% width which overflows on to the &__content section when at bigger screens and we don't want this on screens smaller than 800px because &__content will be above the images and not to the side of them anymore.
+        }
     }
 
     &__content {
@@ -41,6 +56,12 @@
         // flex-direction: column; // Flexbox default direction is row and we need items to be vertical / column direction.
         // justify-content: center; // Vertically aligns content in center. Remember since we changed the flex-direction to column the main-axis changes to vertical / column which the justify-content property always aligns the main-axis which in this case has now changed to vertical / column direction. In this case, align-items would now center horizontally / row direction.
         // align-items: start; // Button stretches the width of the container because default property is stretch. But we can change this here so we have a smaller button by setting it to start as we don't want a button that stretches the width of the container we want it much smaller.
+        
+        @media only screen and (max-width: $bp-medium) { // Responsive design - at less than 800px.
+            grid-column: 1 / -1; // Under 800px we want &__pictures and the &__content to span full width of page and not share half the screen with each other.
+            grid-row: 5 / 6; // Under 800px we want the &__content to come before the pictures so just putting the column above at 1 / -1 does not change the order as the &__content comes after the pictures so we have to specify the row we want to get the &__content to show before the pictures.
+        }
+    
     }
 
     &__text {
